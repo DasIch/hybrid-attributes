@@ -5,9 +5,11 @@
     :copyright: 2016 by Daniel Neuhäuser
     :license: BSD, see LICENSE.rst for details
 """
+import inspect
+
 import pytest
 
-from hybrid_attributes import hybrid_property
+from hybrid_attributes import hybrid_method, hybrid_property
 
 
 class TestHybridProperty:
@@ -167,3 +169,58 @@ class TestHybridProperty:
                 return 'spam'
 
         assert Foo.spam == 'spam'
+
+
+class TestHybridMethod:
+    """
+    Tests for the `hybrid_method` descriptor.
+    """
+
+    def test_is_bound_method_on_instance(self):
+        class Foo:
+            @hybrid_method
+            def spam(self):
+                assert isinstance(self, Foo)
+                return 'spam'
+
+        foo = Foo()
+        assert inspect.ismethod(foo.spam)
+        assert foo.spam() == 'spam'
+
+    def test_is_bound_method_on_class(self):
+        class Foo:
+            @hybrid_method
+            def spam(self):
+                assert self is Foo
+                return 'spam'
+
+        assert inspect.ismethod(Foo.spam)
+        assert Foo.spam() == 'spam'
+
+    def test_different_implementation_on_class(self):
+        class Foo:
+            def _get_spam(self):
+                assert isinstance(self, Foo)
+                return 'instance'
+
+            def _get_class_spam(cls):
+                assert cls is Foo
+                return 'class'
+
+            spam = hybrid_method(_get_spam, _get_class_spam)
+
+        assert Foo.spam() == 'class'
+        assert Foo().spam() == 'instance'
+
+    def test_classmethod(self):
+        class Foo:
+            @hybrid_method
+            def spam(self):
+                return 'instance'
+
+            @spam.classmethod
+            def spam(cls):
+                return 'class'
+
+        assert Foo.spam() == 'class'
+        assert Foo().spam() == 'instance'

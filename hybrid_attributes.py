@@ -119,3 +119,50 @@ class hybrid_property:
             fdel=self.fdel if fdel is None else fdel,
             fcget=self.fcget if fcget is None else fcget
         )
+
+
+class hybrid_method:
+    """
+    A descriptor that binds functions to whatever object, class or instance, it
+    has been accessed on. This allows you to use a function as an instance
+    method and a class method at the same time.
+
+    :param function:
+        A function that is bound to the class or instance and returned, when
+        the attribute is accessed on a class or instance respectively.
+
+    :param class_function:
+        A function that is bound to the class, instead of `function`, when the
+        attribute is accessed on a class.
+
+        Use this when you need different behavior when the method is called on
+        a class.
+
+    Instead of passing all arguments directly, you should use the `classmethod`
+    decorator to define the `class_function`::
+
+        class SomeClass:
+            @hybrid_method
+            def spam(self):
+                return 'called on a SomeClass instance'
+
+            @spam.classmethod
+            def spam(cls):
+                return 'called on SomeClass'
+    """
+    def __init__(self, function, class_function=None):
+        self._function = function
+        self._class_function = class_function
+
+    def __get__(self, instance, owner):
+        if instance is None:
+            clsmethod = classmethod(self._class_function or self._function)
+            return clsmethod.__get__(instance, owner)
+        return self._function.__get__(instance, owner)
+
+    def classmethod(self, class_function):
+        """
+        Returns a new `hybrid_method` instance with `class_function` set to the
+        given function.
+        """
+        return self.__class__(self._function, class_function)
