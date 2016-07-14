@@ -1,0 +1,11 @@
+[run]
+branch = True
+source = hybrid_attributes.py
+
+[paths]
+source =
+  hybrid_attributes.py
+  .tox/*/lib/python*/site-packages/hybrid_attributes.py
+
+[report]
+show_missing = True
