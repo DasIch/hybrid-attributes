@@ -5,7 +5,6 @@
     :copyright: 2016 by Daniel Neuhäuser
     :license: BSD, see LICENSE.rst for details
 """
-import os
 import re
 from pathlib import Path
 
@@ -13,9 +12,9 @@ from setuptools import setup
 
 
 PROJECT_PATH = Path(__file__).parent.absolute()
-
-
 _version_re = re.compile("__version__ = '(\d+\.\d+\.\d+)'")
+
+
 def get_version():
     with (PROJECT_PATH / 'hybrid_attributes.py').open(encoding='utf-8') as f:
         for line in f:
