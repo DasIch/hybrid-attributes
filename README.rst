@@ -9,6 +9,10 @@ Hybrid-Attributes
    :target: https://codecov.io/gh/DasIch/hybrid-attributes
    :alt: Codecov Status
 
+.. image:: https://readthedocs.org/projects/hybrid-attributes/badge/?version=latest
+   :target: http://hybrid-attributes.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation
+
 Hybrid-Attributes implements a `hybrid_property` and `hybrid_method`
 descriptor, which call the underlying function both in a class and instance
 context.
