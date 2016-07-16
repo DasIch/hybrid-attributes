@@ -9,7 +9,7 @@ function both in a class and instance context::
        @hybrid_property
        def spam(self):
            return 'spam'
- 
+
        @hybrid_method
        def eggs(self):
            return 'eggs'
@@ -38,6 +38,18 @@ function both in a class and instance context::
    'spam'
    >>> SomeClass().eggs()
    'eggs'
+
+
+API Reference
+-------------
+
+.. module:: hybrid_attributes
+
+.. autoclass:: hybrid_property
+   :members:
+
+.. autoclass:: hybrid_method
+   :members:
 
 
 Additional Information
