@@ -40,6 +40,14 @@ function both in a class and instance context::
    'eggs'
 
 
+Installation
+------------
+
+Hybrid-Attributes is available on the PyPI and can be installed with pip::
+
+  pip install hybrid-attributes
+
+
 API Reference
 -------------
 
