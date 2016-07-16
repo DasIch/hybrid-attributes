@@ -1,6 +1,14 @@
 Hybrid-Attributes
 =================
 
+.. image:: https://travis-ci.org/DasIch/hybrid-attributes.svg?branch=master
+   :target: https://travis-ci.org/DasIch/hybrid-attributes
+   :alt: Travis CI Status
+
+.. image:: https://codecov.io/gh/DasIch/hybrid-attributes/coverage.svg
+   :target: https://codecov.io/gh/DasIch/hybrid-attributes/coverage.svg
+   :alt: Codecov Status
+
 Hybrid-Attributes implements a `hybrid_property` and `hybrid_method`
 descriptor, which call the underlying function both in a class and instance
 context.
