@@ -6,7 +6,7 @@ Hybrid-Attributes
    :alt: Travis CI Status
 
 .. image:: https://codecov.io/gh/DasIch/hybrid-attributes/coverage.svg
-   :target: https://codecov.io/gh/DasIch/hybrid-attributes/coverage.svg
+   :target: https://codecov.io/gh/DasIch/hybrid-attributes
    :alt: Codecov Status
 
 Hybrid-Attributes implements a `hybrid_property` and `hybrid_method`
