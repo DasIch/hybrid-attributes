@@ -4,3 +4,4 @@
 .coverage
 htmlcov
 .cache
+docs/_build/*
