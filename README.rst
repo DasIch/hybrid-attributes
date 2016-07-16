@@ -67,4 +67,4 @@ You can access the property and call the method on the class or on an instance:
 'spam'
 >>> foo.eggs
 
-Hybrid-Attributes is BSD licensed and available for Python 3.5.
+Hybrid-Attributes is BSD licensed and available for Python 3.4 and later.
